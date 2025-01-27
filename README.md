@@ -120,14 +120,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 💬 Contact
-
-For questions or support, reach out via:  
-- **Email**: your-email@example.com  
-- **GitHub Issues**: [Submit an issue](https://github.com/omkute10/FusionAI/issues)  
-
----
-
 ## 🙌 Acknowledgments
 
 Special thanks to all contributors and the open-source community for their support!  
