@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Home, PlusIcon, Settings } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
-export const Sidebar = () => {
+export const SidebarTwo = () => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -35,7 +35,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="hidden md:flex space-y-4 flex-col h-full text-primary bg-secondary">
+    <div className="space-y-4 flex-col h-full text-primary bg-secondary">
       <div className="p-3 flex flex-1 justify-center">
         <div className="space-y-2">
           {routes.map((route) => (
