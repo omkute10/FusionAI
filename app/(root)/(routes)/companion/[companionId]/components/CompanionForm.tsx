@@ -26,6 +26,9 @@ import { SelectItem } from "@radix-ui/react-select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Wand2 } from "lucide-react";
+import axios from "axios"
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const PREAMBLE = `You are a fictional character whose name is Elon Musk. you are the founder and 
 CEO of Tesla.
@@ -64,6 +67,10 @@ export const CompanionForm = ({
   categories,
   initialData,
 }: CompanionFormProps) => {
+
+  const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -79,7 +86,28 @@ export const CompanionForm = ({
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      if(initialData) {
+        //Companion Update Functionality
+        await axios.patch(`/api/companion/${initialData.id}`, values);
+      } else {
+        //Companion Creation Functionality
+        await axios.post("/api/companion", values);
+      }
+
+      toast({
+        description: "Success"
+      });
+
+      router.refresh();
+      router.push('/');
+
+    } catch(error) {
+      toast({
+        variant: "destructive",
+        description: "Something Went Wrong"
+      });
+    }
   };
 
   return (
@@ -237,7 +265,7 @@ export const CompanionForm = ({
                     />
                   </FormControl>
                   <FormDescription>
-                    Describe in detail your Companion's backstory and relevent details.
+                    A conversation over here.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
