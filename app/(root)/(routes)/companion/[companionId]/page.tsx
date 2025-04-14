@@ -1,5 +1,6 @@
-import { CompanionForm } from "@/app/components/CompanionForm";
+import { CompanionForm } from "@/app/(root)/(routes)/companion/[companionId]/components/CompanionForm";
 import prismadb from "@/lib/prismadb";
+import { FC } from "react";
 
 interface CompanionIdPageProps {
   params: {
@@ -7,9 +8,7 @@ interface CompanionIdPageProps {
   };
 }
 
-const CompanionIdPage = async ({ params }: CompanionIdPageProps) => {
-  //Check for Subscription
-
+const CompanionIdPage: FC<CompanionIdPageProps> = async ({ params }) => {
   const companion = await prismadb.companion.findUnique({
     where: {
       id: params.companionId,
