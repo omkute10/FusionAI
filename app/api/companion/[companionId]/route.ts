@@ -26,7 +26,8 @@ export async function PATCH(
 
         const companion = await prismadb.companion.update({
             where: {
-                id: params.companionId
+                id: params.companionId,
+                userId: user.id
             },
             data: {
                 categoryId,
@@ -47,3 +48,4 @@ export async function PATCH(
         return new NextResponse("Internal Error", { status: 500 });
     }
 }
+
