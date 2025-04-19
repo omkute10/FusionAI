@@ -1,6 +1,5 @@
-
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearchPostgres"]
 }
 
@@ -10,28 +9,28 @@ datasource db {
 }
 
 model Category {
-  id     String @id @default(uuid())
-  name   String
+  id         String      @id @default(uuid())
+  name       String
   companions Companion[]
 }
 
 model Companion {
-  id        String @id @default(uuid())
-  userId    String 
-  userName  String
-  src       String
-  name      String @db.Text
+  id           String @id @default(uuid())
+  userId       String
+  userName     String
+  src          String
+  name         String @db.Text
   description  String
   instructions String @db.Text
-  seed      String @db.Text
+  seed         String @db.Text
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  category  Category @relation(fields: [categoryId], references: [id])
-  categoryId String 
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 
-  messages  Message[]
+  messages Message[]
 
   @@index([categoryId])
 }
@@ -42,16 +41,16 @@ enum Role {
 }
 
 model Message {
-  id          String @id @default(uuid())
-  role        Role
-  content     String @db.Text
-  createdAt   DateTime @default(now())
-  updateAt    DateTime @updatedAt
+  id        String   @id @default(uuid())
+  role      Role
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 
   companionId String
   userId      String
 
-  companion   Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+  companion Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
 
   @@index([companionId])
 }
