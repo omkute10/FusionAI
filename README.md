@@ -23,7 +23,6 @@ Before you begin, ensure you have the following installed on your local system:
 
 - **Bun** (Bun latest Vesrion)
 - **npm** or **yarn**
-- **Docker** (optional, for containerized deployment)
 
 ### Installation
 
