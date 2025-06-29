@@ -1,6 +1,6 @@
 # AI Companion SaaS Platform
 
-An intelligent, always-available AI companion designed to assist users in productivity, personal development, and everyday tasks. This SaaS platform leverages cutting-edge AI technologies to provide personalized interactions, automation, and insightful recommendations.  
+An intelligent, always-available AI companion designed to assist users in productivity, personal development, and everyday tasks.
 
 ---
 
